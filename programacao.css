@@ -1,0 +1,829 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container do Celular/App */
+.app-container {
+    width: 100%;
+    max-width: 412px;
+    height: 892px;
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Controle de visibilidade das janelas */
+.page {
+    display: none;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    position: relative;
+}
+
+.page.active {
+    display: flex;
+}
+
+/* Planos de fundo base */
+.white-bg { background-color: #ffffff; }
+.main-bg { background-color: #ffffff; }
+
+/* Tela de login com imagem de fundo do trem */
+.login-bg {
+    background-image: url('Trem.avif');
+    background-size: cover;
+    background-position: center;
+}
+
+.login-overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.65);
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Componentes de Logos */
+.logo-container {
+    align-items: center;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+.logo-box {
+    font-size: 45px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.logo-title {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #000000;
+}
+
+.logo-subtitle {
+    font-size: 11px;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 0.5px;
+}
+
+.logo-container-register {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+
+.logo-icon-blue {
+    font-size: 40px;
+    color: #0033cc;
+    margin-bottom: 5px;
+}
+
+.blue-text { color: #0033cc !important; }
+
+/* Inputs padrão retangulares (Login) */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #000;
+}
+
+.form-control {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    font-size: 14px;
+    outline: none;
+}
+
+/* Botões robustos azuis */
+.btn-primary {
+    width: 100%;
+    background-color: #002be3;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Links inferiores */
+.links {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.links a {
+    font-size: 13px;
+    color: #000;
+    text-decoration: none;
+}
+
+.bottom-link {
+    text-align: center;
+    margin-top: auto;
+    font-size: 13px;
+    color: #000;
+}
+
+.bottom-link a {
+    color: #000;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.bottom-link-dark {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.bottom-link-dark a {
+    color: #0033cc;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* Inputs em formato de Pílula (Cadastro / Reset) */
+.page-title-center {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 25px;
+}
+
+.pill-input-group {
+    margin-bottom: 14px;
+    padding: 0 24px;
+}
+
+.pill-input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.pill-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.pill-input-wrapper i {
+    position: absolute;
+    left: 18px;
+    color: #666;
+    font-size: 16px;
+}
+
+.pill-input-wrapper input {
+    width: 100%;
+    padding: 11px 16px 11px 45px;
+    border: 1.5px solid #536473;
+    border-radius: 25px;
+    font-size: 13px;
+    outline: none;
+    background: transparent;
+}
+
+.btn-pill {
+    width: calc(100% - 48px);
+    margin-left: 24px;
+    border-radius: 25px;
+    padding: 12px;
+}
+
+/* Cabeçalho superior azul escuro das páginas internas */
+.main-header {
+    background-color: #0a2540;
+    color: white;
+    padding: 20px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 65px;
+}
+
+.main-header h1 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.menu-trigger {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.font-bell {
+    font-size: 22px;
+}
+
+/* Área de Rolagem Interna das Telas */
+.scroll-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 16px;
+}
+
+/* Dashboard: Seção de boas-vindas */
+.welcome-section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+}
+
+.welcome-section p {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Grid de Status da Frota */
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 110px);
+    gap: 12px;
+    margin-bottom: 25px;
+    justify-content: space-between;
+}
+
+.status-card {
+    border-radius: 16px;
+    padding: 16px 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 110px;
+}
+
+.card-green { background-color: #72db57; color: #000; }
+.card-yellow { background-color: #fcd04b; color: #000; }
+.card-red { background-color: #ff3b30; color: #fff; }
+
+.status-number {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.status-label {
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 4px;
+    line-height: 1.2;
+}
+
+/* Indicadores principais (Dashboard) */
+.block-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 12px;
+}
+
+.indicators-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 110px);
+    gap: 12px;
+    margin-bottom: 25px;
+    justify-content: space-between;
+}
+
+.ind-card {
+    border: 1px solid #cccccc;
+    border-radius: 12px;
+    padding: 10px 6px;
+    display: flex;
+    flex-direction: column;
+    height: 105px;
+    background: #fff;
+}
+
+.ind-label {
+    font-size: 9px;
+    color: #333;
+    font-weight: 500;
+}
+
+.ind-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #000;
+    margin-top: 2px;
+}
+
+.sparkline-container {
+    margin-top: auto;
+    width: 100%;
+    height: 30px;
+}
+
+.sparkline-container svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke-width: 2;
+}
+
+.stroke-green { stroke: #72db57; }
+.stroke-yellow { stroke: #fcd04b; }
+.stroke-red { stroke: #ff3b30; }
+
+/* Lista de Alertas Recentes */
+.alerts-list-container {
+    border: 1px solid #000000;
+    border-radius: 0px;
+    background: #fff;
+}
+
+.alert-list-row {
+    display: flex;
+    align-items: center;
+    padding: 15px 12px;
+    border-bottom: 1px solid #000000;
+}
+
+.alert-list-row:last-child {
+    border-bottom: none;
+}
+
+.alert-icon-left {
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+.text-red { color: #ff3b30; }
+.text-orange { color: #ff9500; }
+.text-yellow { color: #ffcc00; }
+.text-green { color: #4cd964; }
+
+.alert-body-text {
+    flex: 1;
+}
+
+.alert-body-text h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+}
+
+.alert-body-text p {
+    font-size: 11px;
+    color: #444;
+}
+
+.alert-arrow-right {
+    color: #000;
+    font-size: 14px;
+}
+
+/* Barra de Pesquisa Padronizada nas Subpáginas */
+.search-bar-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.search-wrapper {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.search-wrapper i {
+    position: absolute;
+    left: 14px;
+    color: #555;
+}
+
+.search-wrapper input {
+    width: 100%;
+    padding: 10px;
+    padding-left: 38px;
+    border: 1px solid #000;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+}
+
+.filter-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #000;
+    background: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Stack de Layout para Janela: Trens */
+.cards-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.train-detail-card {
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 14px;
+    background: #fff;
+}
+
+.card-line-one {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-line-one h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #000;
+}
+
+.indicator-tag {
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.indicator-tag .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.tag-green { color: #4cd964; }
+.tag-green .dot { background-color: #4cd964; }
+.tag-yellow { color: #ffcc00; }
+.tag-yellow .dot { background-color: #ffcc00; }
+.tag-red { color: #ff3b30; }
+.tag-red .dot { background-color: #ff3b30; }
+
+.subtitle-grey {
+    font-size: 13px;
+    color: #333;
+    margin-top: 2px;
+    margin-bottom: 15px;
+}
+
+.card-line-two {
+    display: flex;
+    gap: 40px;
+    font-size: 13px;
+    color: #000;
+}
+
+.card-line-two i {
+    margin-right: 4px;
+}
+
+/* Elementos da Janela: Sensores */
+.sensor-table-list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+}
+
+.sensor-list-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #000;
+    background: #fff;
+}
+
+.sensor-list-item:last-child { border-bottom: none; }
+
+.sensor-avatar-circle {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.bg-blue-icon { background-color: #0033cc; }
+.bg-yellow-icon { background-color: #ffcc00; }
+.bg-green-icon { background-color: #4cd964; }
+
+.sensor-info-text { flex: 1; }
+.sensor-info-text h3 { font-size: 15px; font-weight: 700; color: #000; }
+.sensor-info-text p { font-size: 11px; color: #333; }
+
+.sensor-status-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.sensor-status-right .val {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.pill-critical {
+    font-size: 9px;
+    font-weight: 600;
+    padding: 1px 8px;
+    border-radius: 10px;
+    border: 1px solid currentColor;
+}
+
+.bg-light-red { background: #ffebeb; }
+.bg-light-yellow { background: #fffde6; }
+.bg-light-green { background: #e6ffe6; }
+
+/* Elementos da Janela: Relatórios */
+.padding-box { padding: 20px 24px; }
+
+.report-form-control {
+    margin-bottom: 14px;
+}
+
+.report-form-control label {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 6px;
+}
+
+.input-with-icon-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon-right input,
+.input-with-icon-right select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #000;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 14px;
+    outline: none;
+    appearance: none;
+}
+
+.input-with-icon-right i {
+    position: absolute;
+    right: 14px;
+    color: #000;
+    pointer-events: none;
+}
+
+.chart-section-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.chart-card-box {
+    border: 1px solid #000;
+    border-radius: 8px;
+    padding: 12px;
+    background: #fff;
+}
+
+/* Gráfico de Barras Idêntico da Imagem */
+.bar-chart-mock {
+    display: flex;
+    height: 85px;
+    align-items: flex-end;
+    gap: 4px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+}
+
+.bar {
+    flex: 1;
+    border-radius: 2px 2px 0 0;
+}
+
+.bar-blue { background-color: #0033cc; }
+.bar-grey { background-color: #b0b7bd; }
+
+.chart-details-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.chart-detail-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #000;
+}
+
+/* Elementos da Janela: Usuários */
+.user-rows-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-profile-row {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.user-avatar-img {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    background: #eee;
+}
+
+.user-avatar-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-meta-details h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+}
+
+.user-meta-details p {
+    font-size: 12px;
+    color: #555;
+}
+
+.user-meta-details span {
+    font-size: 11px;
+    color: #777;
+    display: block;
+    margin-top: 1px;
+}
+
+/* ESTRUTURA E ANIMAÇÃO DA ABA LATERAL (SIDEBAR) */
+.sidebar {
+    position: absolute;
+    top: 0;
+    left: -280px;
+    width: 270px;
+    height: 100%;
+    background-color: #0a2540;
+    color: white;
+    z-index: 10000;
+    transition: left 0.3s ease;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+}
+
+.sidebar-header i {
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 12px 14px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: background 0.2s;
+}
+
+.sidebar-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    margin: 15px 0;
+}
+
+.sidebar-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.sidebar-overlay.open {
+    display: block;
+}
+
+/* ================= AJUSTES DA TELA "ESQUECI MINHA SENHA" ================= */
+.forgot-content {
+    text-align: center;
+    padding: 0 10px;
+}
+
+.forgot-calm {
+    font-size: 14px;
+    font-weight: 700;
+    color: #000000;
+    margin-top: 20px;
+    margin-bottom: 35px;
+}
+
+.forgot-message {
+    font-size: 22px;
+    font-weight: 700;
+    color: #000000;
+    line-height: 1.35;
+    margin-bottom: 60px;
+}
+
+.forgot-input-adjust {
+    padding: 0 12px;
+    text-align: left;
+}
+
+.forgot-input-adjust label {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.forgot-btn-adjust {
+    width: calc(100% - 24px);
+    margin-left: 12px;
+    margin-top: 110px;
+}

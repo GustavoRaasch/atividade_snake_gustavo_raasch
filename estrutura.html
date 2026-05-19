@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferrorama - Monitoramento Ferroviário</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="programacao.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <div id="sidebar-menu" class="sidebar">
+            <div class="sidebar-header">
+            </div>
+            <nav class="sidebar-links">
+                <a href="#" onclick="navigateFromMenu('dashboard-page')"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+                <a href="#" onclick="navigateFromMenu('trens-page')"><i class="fa-solid fa-train"></i> Trens</a>
+                <a href="#" onclick="navigateFromMenu('sensores-page')"><i class="fa-solid fa-microchip"></i> Sensores</a>
+                <a href="#" onclick="navigateFromMenu('relatorios-page')"><i class="fa-solid fa-file-invoice"></i> Relatórios</a>
+                <a href="#" onclick="navigateFromMenu('usuarios-page')"><i class="fa-solid fa-users"></i> Usuários</a>
+                <hr class="sidebar-divider">
+                <a href="#" onclick="navigateFromMenu('login-page')"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+            </nav>
+        </div>
+        <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar(false)"></div>
+
+        <div id="login-page" class="page active login-bg">
+            <div class="login-overlay">
+                <div class="logo-container">
+                    <div class="logo-box">
+                        <img src="transferir-Photoroom.png" alt="trem">
+                    </div>
+                    <div class="logo-title">FERRORAMA</div>
+                    <div class="logo-subtitle">MONITORAMENTO FERROVIÁRIO</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Usuário</label>
+                    <input type="text" class="form-control" placeholder="Digite seu usuário">
+                </div>
+
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" class="form-control" placeholder="Digite sua senha">
+                </div>
+
+                <button class="btn-primary" onclick="navigateTo('dashboard-page')">Entrar</button>
+                
+                <div class="links">
+                    <a href="#" onclick="navigateTo('forgot-password-page')">Esqueci minha senha</a>
+                </div>
+
+                <div class="bottom-link">
+                    Não tem uma conta? <a href="#" onclick="navigateTo('register-page')">Cadastra-se</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="register-page" class="page white-bg">
+            <div class="logo-container-register">
+                <i class="fa-solid fa-train-subway logo-icon-blue"></i>
+                <div class="logo-title blue-text">FERRORAMA</div>
+                <div class="logo-subtitle blue-text">MONITORAMENTO FERROVIÁRIO</div>
+            </div>
+
+            <h2 class="page-title-center">Criar nova conta</h2>
+
+            <div class="pill-input-group">
+                <label>Nome completo</label>
+                <div class="pill-input-wrapper">
+                    <i class="fa-regular fa-user"></i>
+                    <input type="text" placeholder="Digite seu nome">
+                </div>
+            </div>
+
+            <div class="pill-input-group">
+                <label>E-mail</label>
+                <div class="pill-input-wrapper">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" placeholder="Digite seu e-mail">
+                </div>
+            </div>
+
+            <div class="pill-input-group">
+                <label>Usuário</label>
+                <div class="pill-input-wrapper">
+                    <i class="fa-regular fa-user"></i>
+                    <input type="text" placeholder="Escolha um usuário">
+                </div>
+            </div>
+
+            <div class="pill-input-group">
+                <label>Senha</label>
+                <div class="pill-input-wrapper">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="Digite sua senha">
+                </div>
+            </div>
+
+            <div class="pill-input-group">
+                <label>Confirmar senha</label>
+                <div class="pill-input-wrapper">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="Confirme a senha">
+                </div>
+            </div>
+
+            <button class="btn-primary btn-pill" onclick="navigateTo('dashboard-page')">Cadastrar</button>
+            <div class="bottom-link-dark">
+                Já tem uma conta? <a href="#" onclick="navigateTo('login-page')">Entrar</a>
+            </div>
+        </div>
+
+        <div id="forgot-password-page" class="page white-bg">
+            <div class="logo-container-register">
+                <i class="fa-solid fa-train-subway logo-icon-blue"></i>
+                <div class="logo-title blue-text">FERRORAMA</div>
+                <div class="logo-subtitle blue-text">MONITORAMENTO FERROVIÁRIO</div>
+            </div>
+
+            <div class="forgot-content">
+                <p class="forgot-calm">Calma! Vamos te ajudar.</p>
+                <h2 class="forgot-message">Enviaremos uma notificação ao seu email para fazer a redefinição de sua senha!</h2>
+                
+                <div class="pill-input-group forgot-input-adjust">
+                    <label>Digite seu e-mail:</label>
+                    <div class="pill-input-wrapper">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" placeholder="Digite seu e-mail">
+                    </div>
+                </div>
+
+                <button class="btn-primary btn-pill forgot-btn-adjust" onclick="navigateTo('login-page')">Avançar</button>
+            </div>
+        </div>
+
+        <div id="dashboard-page" class="page main-bg">
+            <div class="main-header">
+                <i class="fa-solid fa-bars menu-trigger" onclick="toggleSidebar(true)"></i>
+                <h1>Dashboard</h1>
+                <i class="fa-regular fa-bell font-bell"></i>
+            </div>
+
+            <div class="scroll-content">
+                <div class="welcome-section">
+                    <h2>Olá, Ewerton!</h2>
+                    <p>Visão geral da frota</p>
+                </div>
+
+                <div class="status-grid">
+                    <div class="status-card card-green">
+                        <span class="status-number">12</span>
+                        <span class="status-label">Trens ativos</span>
+                    </div>
+                    <div class="status-card card-yellow">
+                        <span class="status-number">3</span>
+                        <span class="status-label">Em manutenção</span>
+                    </div>
+                    <div class="status-card card-red">
+                        <span class="status-number">2</span>
+                        <span class="status-label">Parados</span>
+                    </div>
+                </div>
+
+                <h3 class="block-title">Indicadores principais</h3>
+                <div class="indicators-grid">
+                    <div class="ind-card">
+                        <span class="ind-label">Velocidade média</span>
+                        <span class="ind-value">78 km/h</span>
+                        <div class="sparkline-container">
+                            <svg viewBox="0 0 100 30" class="stroke-green"><polyline points="0,25 20,22 40,28 60,15 80,20 100,5"/></svg>
+                        </div>
+                    </div>
+                    <div class="ind-card">
+                        <span class="ind-label">Alertas ativos</span>
+                        <span class="ind-value">5</span>
+                        <div class="sparkline-container">
+                            <svg viewBox="0 0 100 30" class="stroke-yellow"><polyline points="0,10 25,25 50,15 75,20 100,28"/></svg>
+                        </div>
+                    </div>
+                    <div class="ind-card">
+                        <span class="ind-label">Sensores críticos</span>
+                        <span class="ind-value">8</span>
+                        <div class="sparkline-container">
+                            <svg viewBox="0 0 100 30" class="stroke-red"><polyline points="0,25 20,15 40,22 60,10 80,18 100,12"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="block-title">Alertas recentes</h3>
+                <div class="alerts-list-container">
+                    <div class="alert-list-row">
+                        <div class="alert-icon-left text-red"><i class="fa-regular fa-clock"></i></div>
+                        <div class="alert-body-text">
+                            <h4>Temperatura alta</h4>
+                            <p>TR-204 • Sensor TEMP-56</p>
+                        </div>
+                        <div class="alert-arrow-right"><i class="fa-solid fa-chevron-right"></i></div>
+                    </div>
+                    <div class="alert-list-row">
+                        <div class="alert-icon-left text-orange"><i class="fa-regular fa-bell"></i></div>
+                        <div class="alert-body-text">
+                            <h4>Vibração fora do padrão</h4>
+                            <p>TR-118 • Sensor VIB-12</p>
+                        </div>
+                        <div class="alert-arrow-right"><i class="fa-solid fa-chevron-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="trens-page" class="page main-bg">
+            <div class="main-header">
+                <i class="fa-solid fa-bars menu-trigger" onclick="toggleSidebar(true)"></i>
+                <h1>Trens</h1>
+                <i class="fa-regular fa-bell font-bell"></i>
+            </div>
+            <div class="scroll-content">
+                <div class="search-bar-row">
+                    <div class="search-wrapper">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Buscar trem...">
+                    </div>
+                    <button class="filter-btn"><i class="fa-solid fa-arrow-up-z-a"></i></button>
+                </div>
+
+                <div class="cards-stack">
+                    <div class="train-detail-card">
+                        <div class="card-line-one">
+                            <h2>TR-204</h2>
+                            <span class="indicator-tag tag-green"><span class="dot"></span> Ativo</span>
+                        </div>
+                        <p class="subtitle-grey">Expresso Norte</p>
+                        <div class="card-line-two">
+                            <span><i class="fa-solid fa-location-dot"></i> Joinville/SC</span>
+                            <span><i class="fa-solid fa-gauge-high"></i> 82 km/h</span>
+                        </div>
+                    </div>
+
+                    <div class="train-detail-card">
+                        <div class="card-line-one">
+                            <h2>TR-118</h2>
+                            <span class="indicator-tag tag-yellow"><span class="dot"></span> Em manutenção</span>
+                        </div>
+                        <p class="subtitle-grey">Carga Sul</p>
+                        <div class="card-line-two">
+                            <span><i class="fa-solid fa-location-dot"></i> Curitiba/PR</span>
+                            <span><i class="fa-solid fa-gauge-high"></i> 0 km/h</span>
+                        </div>
+                    </div>
+
+                    <div class="train-detail-card">
+                        <div class="card-line-one">
+                            <h2>TR-405</h2>
+                            <span class="indicator-tag tag-red"><span class="dot"></span> Parado</span>
+                        </div>
+                        <p class="subtitle-grey">Pampa Express</p>
+                        <div class="card-line-two">
+                            <span><i class="fa-solid fa-location-dot"></i> Porto Alegre/RS</span>
+                            <span><i class="fa-solid fa-gauge-high"></i> 0 km/h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="sensores-page" class="page main-bg">
+            <div class="main-header">
+                <i class="fa-solid fa-bars menu-trigger" onclick="toggleSidebar(true)"></i>
+                <h1>Sensores</h1>
+                <i class="fa-regular fa-bell font-bell"></i>
+            </div>
+            <div class="scroll-content">
+                <div class="search-bar-row">
+                    <div class="search-wrapper">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Buscar trem...">
+                    </div>
+                    <button class="filter-btn"><i class="fa-solid fa-arrow-up-z-a"></i></button>
+                </div>
+
+                <div class="sensor-table-list">
+                    <div class="sensor-list-item">
+                        <div class="sensor-avatar-circle bg-blue-icon"></div>
+                        <div class="sensor-info-text">
+                            <h3>TEMP-88</h3>
+                            <p>Temperatura • TR-204</p>
+                        </div>
+                        <div class="sensor-status-right text-red">
+                            <span class="val">87°C</span>
+                            <span class="pill-critical bg-light-red">Crítico</span>
+                        </div>
+                    </div>
+
+                    <div class="sensor-list-item">
+                        <div class="sensor-avatar-circle bg-yellow-icon"></div>
+                        <div class="sensor-info-text">
+                            <h3>VIB-12</h3>
+                            <p>Vibração • TR-118</p>
+                        </div>
+                        <div class="sensor-status-right text-yellow">
+                            <span class="val">2,8 mm/s</span>
+                            <span class="pill-critical bg-light-yellow">Crítico</span>
+                        </div>
+                    </div>
+
+                    <div class="sensor-list-item">
+                        <div class="sensor-avatar-circle bg-green-icon"></div>
+                        <div class="sensor-info-text">
+                            <h3>TEMP-56</h3>
+                            <p>Temperatura • TR-330</p>
+                        </div>
+                        <div class="sensor-status-right text-green">
+                            <span class="val">65°C</span>
+                            <span class="pill-critical bg-light-green">Crítico</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="relatorios-page" class="page main-bg">
+            <div class="main-header">
+                <i class="fa-solid fa-bars menu-trigger" onclick="toggleSidebar(true)"></i>
+                <h1>Relatórios</h1>
+                <i class="fa-regular fa-bell font-bell"></i>
+            </div>
+            <div class="scroll-content padding-box">
+                <div class="report-form-control">
+                    <label>Período</label>
+                    <div class="input-with-icon-right">
+                        <input type="text" value="28/05/2024 - 05/06/2024">
+                        <i class="fa-regular fa-calendar"></i>
+                    </div>
+                </div>
+
+                <div class="report-form-control">
+                    <label>Tipo de relatório</label>
+                    <div class="input-with-icon-right">
+                        <select>
+                            <option>Por trem</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+
+                <div class="report-form-control">
+                    <label>Selecionar trem</label>
+                    <div class="input-with-icon-right">
+                        <select>
+                            <option>TR-204 - Expresso Norte</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+
+                <button class="btn-primary" style="margin-top:10px; margin-bottom: 25px;">Gerar Relatório</button>
+
+                <h3 class="chart-section-title">Resumo do período</h3>
+                <div class="chart-card-box">
+                    <div class="bar-chart-mock">
+                        <div class="bar bar-blue" style="height: 60%;"></div>
+                        <div class="bar bar-blue" style="height: 85%;"></div>
+                        <div class="bar bar-blue" style="height: 50%;"></div>
+                        <div class="bar bar-blue" style="height: 35%;"></div>
+                        <div class="bar bar-blue" style="height: 75%;"></div>
+                        <div class="bar bar-blue" style="height: 90%;"></div>
+                        <div class="bar bar-blue" style="height: 90%;"></div>
+                        <div class="bar bar-grey" style="height: 65%;"></div>
+                        <div class="bar bar-grey" style="height: 75%;"></div>
+                        <div class="bar bar-grey" style="height: 60%;"></div>
+                        <div class="bar bar-grey" style="height: 45%;"></div>
+                        <div class="bar bar-grey" style="height: 70%;"></div>
+                        <div class="bar bar-grey" style="height: 80%;"></div>
+                        <div class="bar bar-grey" style="height: 65%;"></div>
+                        <div class="bar bar-grey" style="height: 50%;"></div>
+                        <div class="bar bar-grey" style="height: 78%;"></div>
+                        <div class="bar bar-grey" style="height: 82%;"></div>
+                        <div class="bar bar-grey" style="height: 82%;"></div>
+                    </div>
+                    <div class="chart-details-list">
+                        <div class="chart-detail-row"><span>Velocidade média (km/h)</span><strong>78</strong></div>
+                        <div class="chart-detail-row"><span>Ocorrências</span><strong>12</strong></div>
+                        <div class="chart-detail-row"><span>Sensores críticos</span><strong>7</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="usuarios-page" class="page main-bg">
+            <div class="main-header">
+                <i class="fa-solid fa-bars menu-trigger" onclick="toggleSidebar(true)"></i>
+                <h1>Usuários</h1>
+                <i class="fa-regular fa-bell"></i>
+            </div>
+            <div class="scroll-content">
+                <div class="search-bar-row">
+                    <div class="search-wrapper">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Buscar usuário...">
+                    </div>
+                    <button class="filter-btn"><i class="fa-solid fa-plus"></i></button>
+                </div>
+
+                <div class="user-rows-container">
+                    <div class="user-profile-row">
+                        <div class="user-avatar-img">
+                            <img src="image copy 3.png" alt="Aline">
+                        </div>
+                        <div class="user-meta-details">
+                            <h3>Aline Carvalho</h3>
+                            <p>aline@gmail.com</p>
+                            <span>Admin</span>
+                        </div>
+                    </div>
+
+                    <div class="user-profile-row">
+                        <div class="user-avatar-img">
+                            <img src="image.png" alt="João">
+                        </div>
+                        <div class="user-meta-details">
+                            <h3>João Martins</h3>
+                            <p>joao@gmail.com</p>
+                            <span>Operador</span>
+                        </div>
+                    </div>
+
+                    <div class="user-profile-row">
+                        <div class="user-avatar-img">
+                            <img src="image copy.png" alt="Ana">
+                        </div>
+                        <div class="user-meta-details">
+                            <h3>Ana Luiza</h3>
+                            <p>ana@gmail.com</p>
+                            <span>Técnico</span>
+                        </div>
+                    </div>
+
+                    <div class="user-profile-row">
+                        <div class="user-avatar-img">
+                            <img src="image copy 2.png" alt="Matheus">
+                        </div>
+                        <div class="user-meta-details">
+                            <h3>Matheus Silva</h3>
+                            <p>matheus@gmail.com</p>
+                            <span>Operador</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            document.querySelector('.app-container').scrollTop = 0;
+        }
+
+        function toggleSidebar(open) {
+            const sidebar = document.getElementById('sidebar-menu');
+            const overlay = document.getElementById('sidebar-overlay');
+            if (open) {
+                sidebar.classList.add('open');
+                overlay.classList.add('open');
+            } else {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('open');
+            }
+        }
+
+        function navigateFromMenu(pageId) {
+            toggleSidebar(false);
+            navigateTo(pageId);
+        }
+    </script>
+</body>
+</html>
